@@ -1,2 +1,2 @@
-# pentools
-Useful pentesting tools & scripts :)
+# pentech
+Useful pentesting techniques, tools & scripts :)
